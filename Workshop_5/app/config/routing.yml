@@ -1,0 +1,5 @@
+workshop.5:
+    resource: "@Workshop_5Bundle/Controller/"
+    type:     annotation
+    prefix:   /
+    

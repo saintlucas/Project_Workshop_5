@@ -1,0 +1,28 @@
+{% if errors is defined %}
+    <ul>
+        {% for error in errors %}
+            <li>{{ error.message }}</li>
+            {% endfor %}
+    </ul>
+{% else %}
+    {% if editForm is defined %}
+        {{ form_start(editForm) }}
+        {{ form_widget(editForm) }}
+        {{ form_end(editForm) }}
+        
+        {{ form_start(addressForm) }}
+        {{ form_widget(addressForm) }}
+        {{ form_end(addressForm) }}
+
+        {{ form_start(phoneForm) }}
+        {{ form_widget(phoneForm) }}
+        {{ form_end(phoneForm) }}
+
+        {{ form_start(emailForm) }}
+        {{ form_widget(emailForm) }}
+        {{ form_end(emailForm) }}
+    {%endif%}
+{%endif%}
+<li>
+    <a href="{{ path('person_index') }}">Powrót do strony głównej</a>
+</li>

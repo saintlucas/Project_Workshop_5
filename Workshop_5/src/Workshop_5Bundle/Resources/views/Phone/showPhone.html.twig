@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Phone</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ phone.id }}</td>
+            </tr>
+            <tr>
+                <th>Phonenumber</th>
+                <td>{{ phone.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ phone.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('phone_indexPhone') }}">Wróć do listy</a>
+        </li>
+    </ul>
+{% endblock %}

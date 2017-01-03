@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Addres list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>Housenumber</th>
+                <th>Appartmentnumber</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for addre in addres %}
+            <tr>
+                <td><a href="{{ path('addres_show', { 'id': addre.id }) }}">{{ addre.id }}</a></td>
+                <td>{{ addre.city }}</td>
+                <td>{{ addre.street }}</td>
+                <td>{{ addre.houseNumber }}</td>
+                <td>{{ addre.appartmentNumber }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('addres_show', { 'id': addre.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('addres_edit', { 'id': addre.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('addres_new') }}">Create a new addre</a>
+        </li>
+    </ul>
+{% endblock %}

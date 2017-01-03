@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Person</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ person.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ person.name }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ person.surname }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ person.description }}</td>
+            </tr>
+            <tr>
+                <th>Adress:</th>
+                    {% if person.addresses | length > 0 %}
+                        {%for address in person.addresses %}
+                        <td>    
+                            <br>
+                            Miasto: {{address.city}}
+                            <br>
+                            Ulica:{{address.street}}
+                            <br>
+                            Nr domu: {{address.houseNumber}}
+                            <br>
+                            Nr mieszkania {{address.apartmentNumber}}
+                            <br>
+                        </td>
+                    {%endfor%}
+                {%else%}
+                    <td>
+                        <p> Podany adres nie istnieje. </p>
+                    </td>
+                {%endif%}
+            </tr>
+            <tr>
+                <th>Numer telefonu:</th>
+                
+                    {%if person.phones | length > 0 %}
+                        {% for phone in person.phones %}
+                        <td>
+                            <br>
+                            Numer telefonu: {{phone.phoneNumber}}
+                            <br>
+                            Typ: {{phone.type}}
+                        </td>
+                    {%endfor%}
+                {%else%}
+                    <td>
+                        <p> Brak podanego numeru telefonu. </p>
+                    </td>
+
+                {%endif%}
+                
+            </tr>
+            <tr>
+                <th>Adres email:</th>
+                    {%if person.emails | length > 0 %}
+                        {% for email in person.emails %}
+                        <td>
+                            <br>
+                            Adres email: {{email.emailAddress}}
+                            <br>
+                            Typ: {{email.type}}
+                        </td>
+                    {%endfor%}
+                {%else%}
+                    <td>
+                        <p> Brak podanego adresu email. </p>
+                    </td>
+                {%endif%}
+            </tr>
+            <tr>
+                <th>Grupy:</th>
+                    {%if person.groups | length > 0 %}
+                    <td>
+                        <ul>
+                            {% for group in person.groups %}
+                                <li><a href="{{path('groups_show', {'id': group.id})}}}">{{group.name}}</a></li>
+                                {%endfor%}
+                        </ul>
+                    </td>
+                {%else%}
+                    <td>
+                        <p> Użytkownik nie należy do żadnej grupy</p>
+                    </td>
+                {%endif%}
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('person_index') }}">Powrót do strony głównej</a>
+        </li>
+        <li>
+            <a href="{{ path('workshop_5_person_editperson', { 'id': person.id }) }}">Zmodyfikuj osobę</a>
+        </li>
+    </ul>
+{% endblock %}

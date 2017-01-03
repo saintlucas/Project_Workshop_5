@@ -1,0 +1,4 @@
+services:
+#    workshop.5.example:
+#        class: Workshop_5Bundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
